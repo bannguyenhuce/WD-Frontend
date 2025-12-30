@@ -118,6 +118,7 @@ function isEmail(value) {
 }
 async function handleLogin(email, password) {
     try {
+        document.getElementById("errMessage").innerHTML = "...Vui lòng chờ";
         const response = await fetch(`${API_URL}/api/auth/login`, {
             method: "POST",
             headers: {
@@ -127,7 +128,6 @@ async function handleLogin(email, password) {
         });
         document.getElementById("errMessage").innerHTML = "...vui lòng chờ";
         const data = await response.json();
-
         if (response.ok) {
             // Store JWT token in local storage
             console.log(data);
